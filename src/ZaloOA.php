@@ -3,7 +3,18 @@
  * Zalo © 2017
  *
  */
-
+$templateData = array(
+    'username' => 'put_your_template_data_here', // request Offical Account Admin to get template data
+    'invitename' => 'put_your_template_data_here'
+);
+$data = array(
+    'phone' => 841285116030, // phone number or user id
+    'templateid' => 'dd154bfb77be9ee0c7af', // request Offical Account Admin to get template id
+    'templatedata' => $templateData
+);
+$params = ['data' => $data];
+$response = $zalo->post(ZaloEndpoint::API_OA_SEND_CUSTOMER_CARE_MSG_BY_PHONE, $params);
+$result = $response->getDecodedBody(); // result
 namespace Zalo;
 
 use Zalo\Exceptions\ZaloSDKException;
@@ -85,3 +96,4 @@ class ZaloOA implements \Serializable
         $this->__construct($id, $secret);
     }
 }
+
